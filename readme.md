@@ -17,22 +17,20 @@
 ## 1. Tổng quan
 ### Giới thiệu
 #### Bài toán đặt ra
-Việc dự đoán đánh giá của người dùng cho sản phẩm rất quan trọng trong các hệ gợi ý hiện nay. Dựa trên đánh giá dự đoán này, hệ thống có thể đưa ra những đề xuất hiệu quả, góp phần làm cải thiện trải nghiệm người dùng.
-Có ba phương pháp chính: content-based, collaborative filtering và hybrid. Project này giới thiệu một mạng nơ-ron sử dụng kết hợp thông tin về người dùng và đặc trưng của phim để đưa ra ước lượng đánh giá phim tối ưu và ứng dụng vào hệ gợi ý.
+Báo cáo tài chính là công cụ thể hiện tình hình tài chính và kết quả hoạt động kinh doanh của doanh nghiệp. Do đó, vấn đề liên quan đến sự minh bạch và trung thực của báo cáo tài chính của các công ty niêm yết trên thị trường chứng khoán luôn được quan tâm hàng đầu. Đáng chú ý, những vụ gian lận báo cáo tài chính sau nhiều năm mới bị phát hiện, gây ra tâm lý nghi ngờ cho nhà đầu tư, ảnh hưởng tới hoạt động của thị trường. Các gian lận chậm bị phát hiện đã có tác động tiêu cực đến việc ra quyết định của các nhà đầu tư. Điều này có thể dẫn đến việc dòng tiền lưu thông không hiệu quả, gây ra nhiều hệ lụy cho cả nền kinh tế nếu không có những biện pháp khắc phục tình trạng này.
+
+Mục đích của đề tài là cung cấp một công cụ hiệu quả hơn để dự đoán khả năng gian lận báo cáo tài chính, định hướng kiểm tra các khoản mục có rủi ro gian lận trên báo cáo tài chính đã được xác định có khả năng gian lận cao nhằm tăng tính hữu hiệu và hiệu quả trong công việc của các kiểm toán viên độc lập. Ngoài ra, các nhà đầu tư, các cơ quan quản lý cũng có thể sử dụng công cụ này để đánh giá lại về báo cáo tài chính sau kiểm toán để đưa ra các quyết định phù hợp.
 
 
-#### Tập dữ liệu MovieLens20M
-[MovieLens](www.movielens.umn.edu) là trang web dành cho việc nghiên cứu hệ thống gợi ý được ra mắt vào mùa thu năm 1997. Mỗi tuần có hàng trăm người truy cập MovieLens, họ đưa ra các đánh giá và nhận lại các bộ phim được gợi ý từ hệ thống. Tải bộ dữ liệu từ [MovieLens](www.movielens.umn.edu) và lưu ở thư mục `ml-20m`.
-Tập dữ liệu này gồm các file:
-1. `genome-tags.csv`: tên thẻ genome dựa theo id
-2. `movies.csv`: mô tả thông tin bộ phim, bao gồm id, tên, thể loại
-3. `tags.csv`: mô tả tag genome cho các phim
-4. `ratings.csv`: mô tả đánh giá của người dùng
-5. `genome-scores.csv`: mô tả đặc trưng phim theo thể loại
+#### Tập dữ liệu 
+Tập dữ liệu được sử dụng trong nghiên cứu này là các báo cáo tài chính chưa được kiểm toán từ năm 2010 đến năm 2019, được cung cấp bởi FiinGroup. Tập dữ liệu bao gồm 1506 công ty phi tài chính trên các sàn giao dịch HNX, HoSE và UpCOM với 189 chỉ tiêu tài chính. 
 
-#### Mô hình mạng nơ-ron 
-Mạng nơ-ron do nhóm đề xuất có cấu trúc như sau:
-![Mô hình mạng nơ-ron đề xuất](/images/model.png)
+Sau khi loại bỏ các bản ghi có giá trị bị thiếu hoặc các bản ghi không tính đoán được chỉ số Beneish M-Score (do thiếu dữ liệu của năm liền trước), tập dữ liệu bao gồm 4883 dòng và 190 cột (bao gồm 189 chỉ tiêu tài chính và 1 cột nhãn gian lận hoặc không gian lận ). Một công ty có thể gian lận nếu có Z-Score ≤ 5,85 [5] và M-Score > -2,22 [69]. Cuối cùng, tác giả có 858 báo cáo tài chính được dán nhãn gian lận và 4025 không gian lận, sự mất cân bằng được thể hiện rõ ràng như ở hình.
+![Biểu đồ thể hiện số lượng BCTC được gắn nhãn gian lận và không gian lận](/images/model.png)
+
+#### Quy trình thực hiện nghiên cứu
+Quy trình thực hiện nghiên cứu của tác giả, theo đó chi tiết các bước sẽ được trình bày ở phần tiếp theo.
+![Sơ đồ mô hình nghiên cứu](/images/model.png)
 
 
 ## 2. Cài đặt môi trường và thư viện cần thiết
