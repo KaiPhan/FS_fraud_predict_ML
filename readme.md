@@ -28,7 +28,7 @@ Sau khi loại bỏ các bản ghi có giá trị bị thiếu hoặc các bản
 
 #### Quy trình thực hiện nghiên cứu
 Quy trình thực hiện nghiên cứu của tác giả, theo đó chi tiết các bước sẽ được trình bày ở phần tiếp theo.
-![Sơ đồ mô hình nghiên cứu](/images/model.png)
+![Sơ đồ mô hình nghiên cứu](/overall_process.PNG)
 
 
 ## 2. Cài đặt môi trường và thư viện cần thiết
